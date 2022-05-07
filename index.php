@@ -1,7 +1,6 @@
 
 <?php 
 
-include('./templates/page-header.php');
 
 ?>
 
@@ -102,4 +101,3 @@ include('./templates/page-header.php');
 </article>
 </main>
 
-    <?php include('templates/page-footer.php');?>
