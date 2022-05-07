@@ -21,8 +21,12 @@ function gen_html($path, $args = [] ){
 }
 
 function gen_page($path) {
-	$content = gen_html('templates/page-header');
-	$content .= gen_html($path);
+	$args = [];
+	if ($path == 'index') {
+		$args = ['is_home' => true];
+	}
+	$content = gen_html('templates/page-header', $args);
+	$content .= gen_html($path, $args);
 	$content .= gen_html('templates/page-footer');
 
 	$dist = __DIR__ . DIRECTORY_SEPARATOR . $path . '.html';

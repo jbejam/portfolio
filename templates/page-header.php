@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
 <?php include("page-head.php")?>
-
-<body>
+<body class="<?=!empty($is_home) ? 'home' : '';?>">
 
     <header id="header" class="header spread" data-sticky-container>
         <nav id="mobileNavigation" class="navigation spread tween affix top top-bar" aria-hidden="true">
