@@ -1,21 +1,32 @@
 <?php
- function get_baseurl(){
+if (!defined('DEFAULT_BASE_URL')) {
+    define('DEFAULT_BASE_URL', 'https://jbejam.github.io/portfolio');
+}
 
+if (!function_exists('gen_path')) {
+    function gen_path($path) {
+        return __DIR__ . DIRECTORY_SEPARATOR .  str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $path); ;
+    }
+}
+if (!function_exists('get_baseurl')) {
+    function get_baseurl(){
+        if (!isset($_SERVER) || !isset($_SERVER['SERVER_NAME'])) {
+            return DEFAULT_BASE_URL . '/';
+        }
+        $scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http') ;
+        $url =  ($_SERVER['SERVER_NAME']==='localhost')?'localhost/jesusbejarano':$_SERVER['SERVER_NAME']; 
 
-$scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http') ;
-$url =  ($_SERVER['SERVER_NAME']==='localhost')?'localhost/jesusbejarano':$_SERVER['SERVER_NAME']; 
-
-return $scheme . '://' . $url . '/';
-
+        return $scheme . '://' . $url . '/';
+    }
 }
 
 ?>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <meta name="description" content='Hello World, my name is Jesús Bejarano. I&#39;m a designer, front-end developer from Venezuela.'/>
+    <meta name="description" content='Hello! My name is Jesús Bejarano. I&#39;m a designer, front-end developer from Venezuela.'/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
-    <title>Jesús Bejarano. Web designer and developer,</title>
+    <title>Jesús Bejarano. Web designer and developer.</title>
     <link rel="shortcut icon" href="<?=get_baseurl();?>img/favicon.ico" media="all"/>
     <link rel="apple-touch-icon" href="<?=get_baseurl();?>img/apple-touch-icon.jpg" media="all"/>
     

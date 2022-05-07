@@ -13,7 +13,7 @@
                     <ul class="menu simple">
                         
 <li>
-    <a title="Github" href="http://github.com/jbeja" target="_blank">
+    <a title="Github" href="http://github.com/jbejam" target="_blank">
         <svg>
             <use xlink:href="#github"></use>
         </svg>
