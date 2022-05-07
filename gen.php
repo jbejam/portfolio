@@ -16,16 +16,19 @@ function gen_html($path, $args = [] ){
 	ob_start();
 	include $found;
 	$content =  ob_get_clean();
+	return $content;
+
+}
+
+function gen_page($path) {
+	$content = gen_html('templates/page-header');
+	$content .= gen_html($path);
+	$content .= gen_html('templates/page-footer');
+
 	$dist = __DIR__ . DIRECTORY_SEPARATOR . $path . '.html';
 	$dist_file = fopen($dist, "w") or die("Unable to find destination file at: " . $dist);
 	fwrite($dist_file, $content);
 	fclose($dist_file);
-}
-
-function gen_page($path) {
-	include('templates/page-header.php');
-	gen_html($path);
-	include('templates/page-footer.php');
 }
 
 gen_page("index");
